@@ -4,6 +4,7 @@
 body {
   margin: 5%;
   background-color: #000;
+  color: #fff;
 }
 
 table {
@@ -38,12 +39,16 @@ function sendIR(array) {
 }
   </script>
   <script src="https://www.puck-js.com/puck.js"></script>
-  <table>
-    <tr>
-     <td onclick="sendIR(commands.on)">ON</td>
-     <td onclick="sendIR(commands.flackern)">FLACKERN</td>
-     <td onclick="sendIR(commands.off)">OFF</td>
-    </tr>
-  </table>
+
+  <script><!--
+
+if (navigator.bluetooth) {
+  document.write('<table> <tr> <td onclick="sendIR(commands.on)">ON</td> <td onclick="sendIR(commands.flackern)">FLACKERN</td> <td onclick="sendIR(commands.off)">OFF</td> </tr> </table>');
+} else {
+  document.write('Web Bluetooth is  <b>not enabled</b> in this browser. On Android use Chrome and write the following into the address bar and enable Web Bluetooth: <pre>chrome://flags/#enable-web-bluetooth</pre><br>More details for other operating systems can be found at <a href="https://www.espruino.com/Puck.js+Quick+Start">the Puck.js Getting Started guide</a>');
+}
+--></script>
+  
+  
  </body>
 </html>
